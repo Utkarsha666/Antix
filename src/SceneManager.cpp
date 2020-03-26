@@ -31,6 +31,11 @@ void SceneManager::DisplayFrame()
     modelsManager->Draw();
 }
 
+ModelsManager* SceneManager::getModelsManager() const
+{
+    return (modelsManager);
+}
+
 void SceneManager::EndFrame()
 {
 

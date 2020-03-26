@@ -21,6 +21,8 @@ namespace Managers
                             int previousWidth,
                             int previousHeight);
 
+        virtual Managers::ModelsManager* getModelsManager() const;
+
     private:
         Managers::ShaderManager* shaderManager;
         Managers::ModelsManager* modelsManager;

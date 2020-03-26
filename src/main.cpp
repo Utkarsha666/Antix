@@ -1,6 +1,6 @@
 // Author : Utkarsha //
 // ////// Date : 13 Feb 2020 // //////
-// Simple Break-out game //
+// Simple C++ Antix Program //
 
 #pragma once
 #include "InitAntix.h"
@@ -21,6 +21,12 @@ int main(int argc, char argv)
     Init::InitAntix::init(window, context, framebuffer);
 
     IListener* scene = new Managers::SceneManager();
+
+    // now drawing the triangle and quad on the screen //
+    scene->getModelsManager()->drawTriangles(0.25, 0.25,        //x1, y1
+                                            -0.25, -0.25,       //x2 , y2
+                                            0.25, -0.25);       //x3, y3
+    scene->getModelsManager()->drawQuad();
 
     Init::InitAntix::setListener(scene);
 

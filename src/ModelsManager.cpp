@@ -4,15 +4,7 @@ using namespace Rendering;
 
 ModelsManager::ModelsManager()
 {
-    Models::Triangle* triangle = new Models::Triangle();
-    triangle->setProgram(ShaderManager::GetShader("colorShader"));
-    triangle->Create();
-    gameModelList["triangle"] = triangle;
-
-    Models::Quad* quad = new Models::Quad();
-    quad->setProgram(ShaderManager::GetShader("colorShader"));
-    quad->Create();
-    gameModelList["quad"] = quad;
+    
 }
 
 ModelsManager::~ModelsManager()
@@ -22,6 +14,22 @@ ModelsManager::~ModelsManager()
         delete model.second;
     }
     gameModelList.clear();
+}
+
+void ModelsManager::drawTriangles(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2, GLfloat x3, GLfloat y3)
+{
+    Models::Triangle* triangle = new Models::Triangle();
+    triangle->setProgram(ShaderManager::GetShader("colorShader"));
+    triangle->Create(x1, y1, x2, y2, x3, y3);
+    gameModelList["triangle"] = triangle;
+}
+
+void ModelsManager::drawQuad()
+{
+    Models::Quad* quad = new Models::Quad();
+    quad->setProgram(ShaderManager::GetShader("colorShader"));
+    quad->Create();
+    gameModelList["quad"] = quad;
 }
 
 const IGameObject& ModelsManager::GetModel(const std::string& gameModelName) const

@@ -8,12 +8,19 @@ Triangle::Triangle()
 
 }
 
+Triangle::Triangle(GLfloat x1, GLfloat y1,
+                  GLfloat x2,  GLfloat y2,
+                  GLfloat x3, GLfloat y3)
+{
+    Create(x1, y1, x2, y2, x3, y3);
+}
+
 Triangle::~Triangle()
 {
 
 }
 
-void Triangle::Create()
+void Triangle::Create(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2, GLfloat x3, GLfloat y3)
 {
     GLuint vao;
     GLuint vbo;
@@ -22,9 +29,9 @@ void Triangle::Create()
     glBindVertexArray(vao);
 
     std::vector<Vertex> vertices;
-    vertices.push_back(Vertex(glm::vec4(0.25, 0.25, 0.0, 1.0), glm::vec4(1, 0, 0, 1)));
-    vertices.push_back(Vertex(glm::vec4(-0.25, -0.25, 0.0, 1.0), glm::vec4(0, 1, 0, 1)));
-    vertices.push_back(Vertex(glm::vec4(0.25, -0.25, 0.0, 1.0), glm::vec4(0, 0, 1, 1)));
+    vertices.push_back(Vertex(glm::vec4(x1, y1, 0.0, 1.0), glm::vec4(1, 0, 0, 1)));
+    vertices.push_back(Vertex(glm::vec4(x2, y2, 0.0, 1.0), glm::vec4(0, 1, 0, 1)));
+    vertices.push_back(Vertex(glm::vec4(x3, y3, 0.0, 1.0), glm::vec4(0, 0, 1, 1)));
 
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
