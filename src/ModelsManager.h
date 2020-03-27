@@ -6,6 +6,7 @@
 #include "IGameObject.h"
 #include "Quad.h"
 #include "Triangle.h"
+#include "Sprite.h"
 
 using namespace Rendering;
 

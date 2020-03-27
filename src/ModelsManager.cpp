@@ -30,6 +30,11 @@ void ModelsManager::drawQuad()
     quad->setProgram(ShaderManager::GetShader("colorShader"));
     quad->Create();
     gameModelList["quad"] = quad;
+
+    Models::Sprite *sprite = new Models::Sprite();
+    sprite->setProgram(ShaderManager::GetShader("colorShader"));
+    sprite->setTexture("../res/image.png");
+    gameModelList["sprite"] = sprite;
 }
 
 const IGameObject& ModelsManager::GetModel(const std::string& gameModelName) const

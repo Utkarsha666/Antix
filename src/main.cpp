@@ -23,9 +23,9 @@ int main(int argc, char argv)
     IListener* scene = new Managers::SceneManager();
 
     // now drawing the triangle and quad on the screen //
-    scene->getModelsManager()->drawTriangles(0.25, 0.25,        //x1, y1
-                                            -0.25, -0.25,       //x2 , y2
-                                            0.25, -0.25);       //x3, y3
+    scene->getModelsManager()->drawTriangles(0.15, 0.15,        //x1, y1
+                                            -0.15, -0.15,       //x2 , y2
+                                            0.15, -0.15);       //x3, y3
     scene->getModelsManager()->drawQuad();
 
     Init::InitAntix::setListener(scene);
