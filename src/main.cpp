@@ -27,6 +27,7 @@ int main(int argc, char argv)
                                             -0.15, -0.15,       //x2 , y2
                                             0.15, -0.15);       //x3, y3
     scene->getModelsManager()->drawQuad();
+    scene->getModelsManager()->drawSprite("../res/image.png");
 
     Init::InitAntix::setListener(scene);
 
