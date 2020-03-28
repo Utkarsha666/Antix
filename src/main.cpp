@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 
     AntixEngine *game = new AntixEngine();
     
-    game->createWindow("Breakout", 400, 200, 800, 600, true);
+    game->createWindow("My New Game", 400, 200, 800, 600, true);
 
 
     game->getModelsManager()->drawQuad();
