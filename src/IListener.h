@@ -7,7 +7,9 @@ namespace Antix{
     
     class IListener
     {
+        // abstract class don't have destructors //
     public:
+        // destructor
         virtual ~IListener() = 0;
 
         virtual void BeginFrame() = 0;     
@@ -17,7 +19,10 @@ namespace Antix{
                             int height,
                             int previousWidth,
                             int previousHeight) = 0;
+
+        // getters and setters for models managers //
         virtual Managers::ModelsManager* getModelsManager() const = 0;
+        virtual void setModelsManager(Managers::ModelsManager*&) = 0;
     };
     // destructor //
     inline IListener::~IListener() {

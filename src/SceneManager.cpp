@@ -5,17 +5,20 @@ using namespace Managers;
 SceneManager::SceneManager()
 {
     glEnable(GL_DEPTH_TEST);
-    shaderManager = new ShaderManager();
-    shaderManager->CreateProgram("colorShader",
-                                "../Shaders/basic_vert.glsl",
-                                "../Shaders/basic_frag.glsl");
-    modelsManager = new ModelsManager();
+    
 }
 
 SceneManager::~SceneManager()
 {
-    delete shaderManager;
-    delete modelsManager;
+    if (modelsManager) {
+        delete modelsManager;
+        modelsManager = NULL;
+    }
+
+    if (shaderManager) {
+        delete shaderManager;
+        shaderManager = NULL;
+    }
 }
 
 void SceneManager::BeginFrame()
@@ -47,4 +50,9 @@ void SceneManager::Reshape(int width,
                             int previousHeight)
 {
     
+}
+
+void SceneManager::setModelsManager(Managers::ModelsManager*& models_manager)
+{
+    this->modelsManager = models_manager;
 }

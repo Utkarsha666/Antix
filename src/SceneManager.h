@@ -4,7 +4,6 @@
 #include "ShaderManager.h"
 #include "ModelsManager.h"
 #include "IListener.h"
-
 namespace Managers
 {
     class SceneManager : public Antix::IListener
@@ -22,6 +21,7 @@ namespace Managers
                             int previousHeight);
 
         virtual Managers::ModelsManager* getModelsManager() const;
+        virtual void setModelsManager(Managers::ModelsManager*& models_manager);
 
     private:
         Managers::ShaderManager* shaderManager;

@@ -18,7 +18,6 @@ namespace Rendering
             virtual void Update() override;
             virtual void setProgram(GLuint shaderName) override;
             virtual void Destroy() override;
-
             virtual GLuint GetVao() const override;
             virtual const std::vector<GLuint>& GetVbos() const override;
 

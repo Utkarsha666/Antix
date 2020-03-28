@@ -40,14 +40,17 @@ GLuint ShaderManager::createShader(GLenum shaderType, const std::string& source,
 {
     int compileResult = 0;
 
+    // create shader vertex or fragment
     GLuint shader = glCreateShader(shaderType);
     const char* shader_code_ptr = source.c_str();
     const int shader_code_size = source.size();
 
+    // get shader source and compile the shader //
     glShaderSource(shader, 1, &shader_code_ptr, &shader_code_size);
     glCompileShader(shader);
     glGetShaderiv(shader, GL_COMPILE_STATUS, &compileResult);
 
+    // if error then display the compilation error logs //
     if (compileResult == GL_FALSE)
     {
         int info_log_length = 0;
@@ -63,23 +66,32 @@ void ShaderManager::CreateProgram(const std::string& shaderName,
                                 const std::string& vertexShaderFilename,
                                 const std::string& fragmentShaderFilename)
 {
+    // helper function to read shaderFile from hard drive //
     std::string vertex_shader_code = readShader(vertexShaderFilename);
     std::string fragment_shader_code = readShader(fragmentShaderFilename);
 
+    // now create vertex and fragment shader
     GLuint vertex_shader = createShader(GL_VERTEX_SHADER, vertex_shader_code, "vertex shader");
     GLuint fragment_shader = createShader(GL_FRAGMENT_SHADER, fragment_shader_code, "fragment shader");
 
     int link_result = 0;
 
+    // attach vertex shader and fragment shader
     GLuint program = glCreateProgram();
     glAttachShader(program, vertex_shader);
     glAttachShader(program, fragment_shader);
 
+    // link shader program
     glLinkProgram(program);
     glGetProgramiv(program, GL_LINK_STATUS, &link_result);
 
+    // link error logs //
     if (link_result == GL_FALSE) {
-        std::cout << "Shader Link Error!!! " << std::endl;
+        int info_log_length = 0;
+        glGetShaderiv(program, GL_INFO_LOG_LENGTH, &info_log_length);
+        std::vector<char> shader_log(info_log_length);
+        glGetShaderInfoLog(program, info_log_length, NULL, &shader_log[0]);
+        std::cout << "Shader Link Error!!! " << shaderName.c_str() << std::endl << &shader_log[0] << std::endl;
     }
 
     programs[shaderName] = program;

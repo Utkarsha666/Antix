@@ -21,7 +21,8 @@ Sprite::Sprite()
 
 Sprite::~Sprite()
 {
-
+    delete texture;
+    delete quad;
 }
 
 void Sprite::setTexture(GLchar *path)
@@ -39,6 +40,5 @@ void Sprite::Draw()
     glUseProgram(program);
     texture->bind();
     quad->Create();
-    quad->Draw();   
 }
 
