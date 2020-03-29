@@ -4,7 +4,7 @@ using namespace Rendering;
 
 ModelsManager::ModelsManager()
 {
-    
+
 }
 
 ModelsManager::~ModelsManager()
@@ -27,7 +27,7 @@ void ModelsManager::drawTriangles(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2
 void ModelsManager::drawQuad()
 {
     Models::Quad* quad = new Models::Quad();
-    quad->setProgram(ShaderManager::GetShader("colorShader"));
+    quad->setProgram(ShaderManager::GetShader("spriteShader"));
     quad->Create();
     this->gameModelList["quad"] = quad;
 }
@@ -35,7 +35,7 @@ void ModelsManager::drawQuad()
 void ModelsManager::drawSprite(GLchar* path)
 {
     Models::Sprite *sprite = new Models::Sprite();
-    sprite->setProgram(ShaderManager::GetShader("colorShader"));
+    sprite->setProgram(ShaderManager::GetShader("spriteShader"));
     sprite->setTexture(path);
     this->gameModelList["sprite"] = sprite;
 }

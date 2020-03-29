@@ -52,6 +52,11 @@ void Texture::bind() const
     glBindTexture(GL_TEXTURE_2D, this->ID);
 }
 
+void Texture::unbind() const
+{
+    glBindTexture(GL_TEXTURE_2D, 0);
+}
+
 Texture& Texture::operator=(Texture& tex)
 {
     this->ID = tex.ID;

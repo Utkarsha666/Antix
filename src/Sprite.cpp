@@ -28,6 +28,7 @@ Sprite::~Sprite()
 void Sprite::setTexture(GLchar *path)
 {
     texture->loadTexture(path, false, "sprite");
+   // textures["sprite"] = textures;
 }
 
 void Sprite::setQuad(Quad *quad)
@@ -35,10 +36,15 @@ void Sprite::setQuad(Quad *quad)
     this->quad = quad;
 }
 
+void Sprite::init()
+{
+    quad->Create();
+}
+
 void Sprite::Draw()
 {
     glUseProgram(program);
     texture->bind();
-    quad->Create();
+    quad->Draw();
 }
 

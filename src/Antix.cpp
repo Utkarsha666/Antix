@@ -9,6 +9,11 @@ AntixEngine::AntixEngine()
 
 }
 
+void AntixEngine::loadShader(std::string name, GLchar* vert_path, GLchar* frag_path)
+{
+    this->m_ShaderManager->CreateProgram(name, vert_path, frag_path);
+}
+
 bool AntixEngine::init()
 {
     this->m_ShaderManager = new Managers::ShaderManager();

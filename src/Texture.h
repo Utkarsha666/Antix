@@ -24,6 +24,7 @@ namespace Rendering
             void bind() const;
         /// These are just the attributes of the textures // 
             Texture& operator=(Texture& tex);
+            void unbind() const;
         private:
             GLuint ID;
             GLuint WIDTH;

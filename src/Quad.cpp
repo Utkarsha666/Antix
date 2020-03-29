@@ -37,13 +37,13 @@ void Quad::Create()
 
     std::vector<Vertex> vertices;
     vertices.push_back(Vertex(glm::vec4(-0.25, 0.5, 0.0, 1.0),
-                            glm::vec4(1, 0, 0, 1)));
+                            glm::vec2(0, 0)));
     vertices.push_back(Vertex(glm::vec4(-0.25, 0.75, 0.0, 1.0),
-                            glm::vec4(0, 0, 0, 1)));
+                            glm::vec2(0, 1)));
     vertices.push_back(Vertex(glm::vec4(0.25, 0.5, 0.0, 1.0),
-                            glm::vec4(0, 1, 0, 1)));
+                            glm::vec2(1, 0)));
     vertices.push_back(Vertex(glm::vec4(0.25, 0.75, 0.0, 1.0),
-                            glm::vec4(0, 0, 1, 1)));
+                            glm::vec2(1, 1)));
 
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -51,7 +51,7 @@ void Quad::Create()
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)0);
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(offsetof(Vertex, Vertex::color)));
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(offsetof(Vertex, Vertex::texture)));
     glBindVertexArray(0);
     this->vao = vao;
     this->vbos.push_back(vbo);

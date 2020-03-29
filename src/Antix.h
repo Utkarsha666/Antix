@@ -25,6 +25,9 @@ namespace Antix
         Managers::ShaderManager* getShaderManager() const;
         Managers::ModelsManager* getModelsManager() const;
 
+        // loading shaders //
+        void loadShader(std::string name, GLchar* vert_path, GLchar* frag_path);
+
     private:
         bool init();
 

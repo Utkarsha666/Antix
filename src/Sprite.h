@@ -3,6 +3,7 @@
 
 #include "Model.h"
 #include "Quad.h"
+#include <map>
 #include "Texture.h"
 #include <GL/glew.h>
 #include "ShaderManager.h"
@@ -18,7 +19,7 @@ namespace Rendering
             Sprite();
             //Sprite(Texture &texture);
             ~Sprite();
-
+            void init();
             void setTexture(GLchar *path);
             void setQuad(Quad *quad);
             virtual void Draw() override final;
@@ -26,6 +27,8 @@ namespace Rendering
         private:
             Texture *texture;
             Models::Quad *quad;
+           // std::map<std::string, Models::Texture> textures;
+
         };
     }
 }

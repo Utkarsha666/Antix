@@ -17,13 +17,15 @@ int main(int argc, char **argv)
     
     game->createWindow("My New Game", 400, 200, 800, 600, true);
 
-
-    game->getModelsManager()->drawQuad();
+    // default shader //
     game->getModelsManager()->drawTriangles(0.15, 0.15,          // x1, y1
                                                                -0.15, -0.15,        // x2, y2
                                                                 0.15, -0.15);       // x3, y3
 
-    game->getModelsManager()->drawSprite("../res/image.png");
+    // Load Shader from file //                                                               
+    game->loadShader("spriteShader", "../Shaders/vert.glsl", "../Shaders/frag.glsl");
+    game->getModelsManager()->drawQuad();
+    game->getModelsManager()->drawSprite("../textures/block_solid.png");
     game->run();
 
     return 0;
