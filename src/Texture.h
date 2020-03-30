@@ -6,7 +6,7 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 #include <map>
-#include "SOIL.h"
+#include "../vendor/SOIL.h"
 ////////////////////////////////////
 
 namespace Rendering
