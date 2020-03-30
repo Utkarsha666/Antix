@@ -42,4 +42,4 @@ Sprite.o : Sprite.cpp Texture.o Quad.o Model.o
 	$(CC) -c Sprite.cpp -o Sprite.o $(LIBS)
  
 clean :
-	rm InitGlew.o InitAntix.o ShaderManager.o Model.o Triangle.o ModelsManager.o SceneManager.o Quad.o Sprite.o Texture.o Antix.o libAntix.a main
+	rm main InitGlew.o InitAntix.o ShaderManager.o Model.o Triangle.o ModelsManager.o SceneManager.o Quad.o Sprite.o Texture.o Antix.o libAntix.a 
