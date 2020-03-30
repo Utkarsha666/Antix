@@ -21,7 +21,7 @@ namespace Rendering
             ~Sprite();
             void init();
             void setTexture(GLchar *path);
-            void setQuad(Quad *quad);
+            void setQuad(Quad *& quad);
             virtual void Draw() override final;
 
         private:

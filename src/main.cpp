@@ -3,9 +3,9 @@
 // Simple C++ Antix Program //
 
 #pragma once
-#include "InitAntix.h"
+
 #include "Antix.h"
-#include "Quad.h"
+
 
 using namespace Antix;
 using namespace Init;
@@ -24,8 +24,7 @@ int main(int argc, char **argv)
 
     // Load Shader from file //                                                               
     game->loadShader("spriteShader", "../Shaders/vert.glsl", "../Shaders/frag.glsl");
-    game->getModelsManager()->drawQuad();
-    game->getModelsManager()->drawSprite("../textures/block_solid.png");
+    game->getModelsManager()->drawSprite("../textures/background.jpg");
     game->run();
 
     return 0;
