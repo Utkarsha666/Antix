@@ -4,6 +4,11 @@
 #include "ShaderManager.h"
 #include "ModelsManager.h"
 #include "IListener.h"
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 namespace Managers
 {
     class SceneManager : public Antix::IListener
@@ -26,6 +31,9 @@ namespace Managers
     private:
         Managers::ShaderManager* shaderManager;
         Managers::ModelsManager* modelsManager;
+
+        glm::mat4 projection_matrix;
+        glm::mat4 view_matrix;
     };
 }
 #endif 

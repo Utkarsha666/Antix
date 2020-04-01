@@ -14,8 +14,9 @@ namespace Rendering
 
 
             void Create();
-            virtual void Draw() override final;
+            virtual void Draw(glm::mat4 projection_matrix, glm::mat4 view_matrix) override final;
             virtual void Update() override final;
+        
         };
     }
 }

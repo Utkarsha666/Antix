@@ -3,11 +3,11 @@
 layout (location = 0) in vec4 in_position;
 layout (location = 1) in vec2 in_texCoords;
 
-
-out vec2 texCoords;;
+uniform mat4 projection;
+out vec2 texCoords;
 
 void main()
 {
-    gl_Position = in_position;
+    gl_Position = projection * in_position ;
     texCoords = in_texCoords;
 }

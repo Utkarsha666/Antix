@@ -3,14 +3,16 @@
 using namespace Rendering;
 using namespace Models;
 
-Model::Model() { }
+Model::Model() {
+
+ }
 
 Model::~Model()
 {
     Destroy();
 }
 
-void Model::Draw()
+void Model::Draw(glm::mat4 projection_matrix, glm::mat4 view_matrix)
 {
 
 }
@@ -41,3 +43,5 @@ void Model::Destroy()
     glDeleteBuffers(vbos.size(), &vbos[0]);
     vbos.clear();
 }
+
+

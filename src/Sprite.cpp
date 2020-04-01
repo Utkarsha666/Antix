@@ -15,8 +15,16 @@ using namespace Models;
 
 Sprite::Sprite()
 {
+    this->texture = new Texture();
+    this->quad = new Quad();
+}
+
+Sprite::Sprite(GLchar* path, bool alpha)
+{
     this->texture = new Texture;
     this->quad = new Quad();
+    this->path = path;
+    this->alpha = alpha;
 }
 
 Sprite::~Sprite()
@@ -25,9 +33,9 @@ Sprite::~Sprite()
     delete quad;
 }
 
-void Sprite::setTexture(GLchar *path)
+void Sprite::setTexture(GLchar *path, bool alpha)
 {
-    texture->loadTexture(path, false, "sprite");
+    texture->loadTexture(path, alpha, "sprite");
    // textures["sprite"] = textures;
 }
 
@@ -41,11 +49,26 @@ void Sprite::init()
     quad->Create();
 }
 
-void Sprite::Draw()
+void Sprite::Draw(glm::mat4 projection_matrix, glm::mat4 view_matrix)
 {
     glUseProgram(program);
+    glUniformMatrix4fv(glGetUniformLocation(program, "projection"), 1, GL_FALSE, glm::value_ptr(projection_matrix));    // passing projection matrix to shaders //
     texture->bind();
-    quad->Draw();
+    quad->Draw(projection_matrix, view_matrix);
     texture->unbind();
+}
+
+void Sprite::setWidthAndHeight(GLuint width, GLuint height)
+{
+    this->Width = width;
+    this->Height = height;
+}
+
+void Sprite::operator=(const Models::Sprite *& sprite)
+{
+    this->texture = sprite->texture;
+    this->quad = sprite->quad;
+    this->Width = sprite->Width;
+    this->Height = sprite->Height;
 }
 

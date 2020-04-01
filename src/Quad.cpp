@@ -14,7 +14,8 @@ using namespace Models;
 
 Quad::Quad()
 {
-
+    //this->position_x = 1;
+    //this->position_y = 1;
 }
 
 Quad::~Quad()
@@ -36,13 +37,13 @@ void Quad::Create()
     glBindVertexArray(vao);
 
     std::vector<Vertex> vertices;
-    vertices.push_back(Vertex(glm::vec4(-0.25, 0.5, 0.0, 1.0),
+    vertices.push_back(Vertex(glm::vec4(100.0f, 100.0f, 0.0, 1.0),
                             glm::vec2(0, 0)));
-    vertices.push_back(Vertex(glm::vec4(-0.25, 0.75, 0.0, 1.0),
+    vertices.push_back(Vertex(glm::vec4(50.0f, 100.0f, 0.0, 1.0),
                             glm::vec2(0, 1)));
-    vertices.push_back(Vertex(glm::vec4(0.25, 0.5, 0.0, 1.0),
+    vertices.push_back(Vertex(glm::vec4(100.0f, 50.0f, 0.0, 1.0),
                             glm::vec2(1, 0)));
-    vertices.push_back(Vertex(glm::vec4(0.25, 0.75, 0.0, 1.0),
+    vertices.push_back(Vertex(glm::vec4(50.0f, 50.0f, 0.0, 1.0),
                             glm::vec2(1, 1)));
 
     glGenBuffers(1, &vbo);
@@ -63,9 +64,10 @@ void Quad::Update()
 }
 
 // this is what i am saying //
-void Quad::Draw()
+void Quad::Draw(glm::mat4 projection_matrix, glm::mat4 view_matrix)
 {
     glUseProgram(program);
+    glUniformMatrix4fv(glGetUniformLocation(program, "projection"),1, GL_FALSE, glm::value_ptr(projection_matrix));
     glBindVertexArray(vao);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
