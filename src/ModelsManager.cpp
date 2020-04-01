@@ -38,17 +38,16 @@ void ModelsManager::drawQuad()
 
 // function that draws quad on the screen first, and then lays texture on top of it ///
 /////////////////////////////////////////////////////////////////////////////////////
-void ModelsManager::drawSprite(Models::Sprite *& sprite)
+void ModelsManager::attachSprite(Models::Sprite *& sprite, std::string name)
 {
     Models::Sprite *m_sprite = new Models::Sprite();
     m_sprite = sprite;
     Models::Quad *quad = new Models::Quad();
     m_sprite->setProgram(ShaderManager::GetShader("spriteShader"));
-    m_sprite->setTexture(sprite->getPath(), sprite->getAlpha());
+    m_sprite->setTexture(m_sprite->getPath(), m_sprite->getAlpha());
     quad->Create();
     m_sprite->setQuad(quad);  // set quad //
-    this->gameModelList["sprite"] = sprite;
-    std::cout << "Called Sprite Draw function " << std::endl;
+    this->gameModelList[name] = sprite;
 }       //end function draw sprite //
 
 const IGameObject& ModelsManager::GetModel(const std::string& gameModelName) const

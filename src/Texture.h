@@ -25,6 +25,8 @@ namespace Rendering
         /// These are just the attributes of the textures // 
             Texture& operator=(Texture& tex);
             void unbind() const;
+            GLuint getTexture();
+            
         private:
             GLuint ID;
             GLuint WIDTH;

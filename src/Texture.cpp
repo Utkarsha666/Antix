@@ -70,3 +70,8 @@ Texture& Texture::operator=(Texture& tex)
     this->IMAGE_FORMAT = tex.IMAGE_FORMAT;
     return *this;
 }
+
+GLuint Texture::getTexture()
+{
+    return (this->ID);
+}
