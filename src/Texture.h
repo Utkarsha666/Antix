@@ -1,5 +1,5 @@
 #ifndef _TEXTURE_MANAGER_H
-#define _TEXTURES_MANAGER_H
+#define _TEXTURE_MANAGER_H
 
 /////// Header Files //////////////////
 #include <string>
@@ -26,6 +26,8 @@ namespace Rendering
             Texture& operator=(Texture& tex);
             void unbind() const;
             GLuint getTexture();
+
+            std::string getName();
             
         private:
             GLuint ID;
@@ -37,6 +39,7 @@ namespace Rendering
             GLuint FILTER_MIN;
             GLuint INTERNAL_FORMAT;
             GLuint IMAGE_FORMAT;
+            std::string name;
         };
     }
 }

@@ -21,12 +21,8 @@ namespace Rendering
             virtual GLuint GetVao() const override;
             virtual const std::vector<GLuint>& GetVbos() const override;
 
-
-
+            void operator=(Model *&);
         protected:
-        
-
-
             GLuint vao;
             GLuint program;
             std::vector<GLuint> vbos;

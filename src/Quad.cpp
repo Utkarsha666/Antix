@@ -7,15 +7,11 @@
 // here the attributes of vertex are Position Vector, Color Vector and Texture Coordinates //
 
 
-// FORGIVE ME FOR BAD ENGLISH //
-
 using namespace Rendering;
 using namespace Models;
 
 Quad::Quad()
 {
-    //this->position_x = 1;
-    //this->position_y = 1;
 }
 
 Quad::~Quad()
@@ -29,7 +25,7 @@ Quad::~Quad()
 // then there is the empty buffer, we need to fill in with our position and color vector in that buffer //
 // later for drawing we just bind the vertex array and then call draw function ///
 
-void Quad::Create()
+void Quad::Create(GLfloat x, GLfloat y)
 {
     GLuint vao;
     GLuint vbo;
@@ -37,13 +33,13 @@ void Quad::Create()
     glBindVertexArray(vao);
 
     std::vector<Vertex> vertices;
-    vertices.push_back(Vertex(glm::vec4(100.0f, 100.0f, 0.0, 1.0),
+    vertices.push_back(Vertex(glm::vec4(x, y, 0.0, 1.0),
                             glm::vec2(0, 0)));
-    vertices.push_back(Vertex(glm::vec4(50.0f, 100.0f, 0.0, 1.0),
+    vertices.push_back(Vertex(glm::vec4(x, y-80.0f, 0.0, 1.0),
                             glm::vec2(0, 1)));
-    vertices.push_back(Vertex(glm::vec4(100.0f, 50.0f, 0.0, 1.0),
+    vertices.push_back(Vertex(glm::vec4(x+80.0f, y, 0.0, 1.0),
                             glm::vec2(1, 0)));
-    vertices.push_back(Vertex(glm::vec4(50.0f, 50.0f, 0.0, 1.0),
+    vertices.push_back(Vertex(glm::vec4(x+80.0f, y-80.0f, 0.0, 1.0),
                             glm::vec2(1, 1)));
 
     glGenBuffers(1, &vbo);

@@ -28,25 +28,24 @@ void ModelsManager::drawTriangles(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2
     this->gameModelList["triangle"] = triangle;
 }       //end function drawTriangle()
 
-void ModelsManager::drawQuad()
+void ModelsManager::drawQuad(GLfloat x, GLfloat y)
 {
     Models::Quad* quad = new Models::Quad();
     quad->setProgram(ShaderManager::GetShader("spriteShader"));
-    quad->Create();
+    quad->Create(x, y);
     this->gameModelList["quad"] = quad;
 }       // end function drawQuad()
 
 // function that draws quad on the screen first, and then lays texture on top of it ///
 /////////////////////////////////////////////////////////////////////////////////////
-void ModelsManager::attachSprite(Models::Sprite *& sprite, std::string name)
+void ModelsManager::attachSprite(Models::Sprite *& sprite, std::string name, GLfloat x, GLfloat y)
 {
     Models::Sprite *m_sprite = new Models::Sprite();
     m_sprite = sprite;
     Models::Quad *quad = new Models::Quad();
     m_sprite->setProgram(ShaderManager::GetShader("spriteShader"));
-    m_sprite->setTexture(m_sprite->getPath(), m_sprite->getAlpha());
-    quad->Create();
-    m_sprite->setQuad(quad);  // set quad //
+    m_sprite->setTexture(m_sprite->getPath(), m_sprite->getAlpha(), name);
+    m_sprite->setQuad(quad, x, y);
     this->gameModelList[name] = sprite;
 }       //end function draw sprite //
 

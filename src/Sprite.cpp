@@ -33,20 +33,15 @@ Sprite::~Sprite()
     delete quad;
 }
 
-void Sprite::setTexture(GLchar *path, bool alpha)
+void Sprite::setTexture(GLchar *path, bool alpha, std::string name)
 {
-    texture->loadTexture(path, alpha, "sprite");
-   // textures["sprite"] = textures;
+    texture->loadTexture(path, alpha, name);
 }
 
-void Sprite::setQuad(Quad*& quad)
+void Sprite::setQuad(Quad *& quad, GLfloat x, GLfloat y)
 {
     this->quad = quad;
-}
-
-void Sprite::init()
-{
-    quad->Create();
+    this->quad->Create(x, y);
 }
 
 void Sprite::Draw(glm::mat4 projection_matrix, glm::mat4 view_matrix)
@@ -72,3 +67,17 @@ void Sprite::operator=(const Models::Sprite *& sprite)
     this->Height = sprite->Height;
 }
 
+GLchar* Sprite::getPath()
+{
+    return path;
+}
+
+bool Sprite::getAlpha()
+{
+    return alpha;
+}
+
+//const Texture& Sprite::getTexture(std::string name)
+//{
+ //   return (*textures.at(texture->getName()));
+//}

@@ -25,8 +25,8 @@ namespace Managers
         void DeleteModel(const std::string& gameModelName);
         const IGameObject& GetModel(const std::string& gameModelName) const;
         void drawTriangles(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2, GLfloat x3, GLfloat y3);
-        void drawQuad();
-        void attachSprite(Models::Sprite *& sprite, std::string name);
+        void drawQuad(GLfloat x, GLfloat y);
+        void attachSprite(Models::Sprite *& sprite, std::string name, GLfloat x, GLfloat y);
 
     private:
         std::map<std::string, IGameObject*> gameModelList;

@@ -44,4 +44,9 @@ void Model::Destroy()
     vbos.clear();
 }
 
+void Model::operator=(Model *& model)
+{
+    this->vao = model->vao;
+    this->vbos = model->vbos;
+}
 

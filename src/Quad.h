@@ -11,12 +11,10 @@ namespace Rendering
         public:
             Quad();
             ~Quad();
-
-
-            void Create();
+            
+            void Create(GLfloat x, GLfloat y);
             virtual void Draw(glm::mat4 projection_matrix, glm::mat4 view_matrix) override final;
             virtual void Update() override final;
-        
         };
     }
 }

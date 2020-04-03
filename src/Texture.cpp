@@ -7,7 +7,6 @@ using namespace Models;
 Texture::Texture() : WIDTH(0), HEIGHT(0), INTERNAL_FORMAT(GL_RGB), IMAGE_FORMAT(GL_RGB), 
                                     WRAP_S(GL_REPEAT), WRAP_T(GL_REPEAT), FILTER_MIN(GL_LINEAR), FILTER_MAG(GL_LINEAR)
 {
-    glGenTextures(1, &this->ID);
 }
 
 Texture::~Texture()
@@ -18,6 +17,7 @@ Texture::~Texture()
 // with this functon texture is loaded from the file // the last argument is the texture name //
 void Texture::loadTexture(GLchar* path, bool alpha, std::string name)
 {
+    this->name = name;
     if (alpha)
     {
         INTERNAL_FORMAT = GL_RGBA;
@@ -37,6 +37,7 @@ void Texture::genTextures(GLuint width, GLuint height, unsigned char* data)
 {
     this->WIDTH = width;
     this->HEIGHT = height;
+    glGenTextures(1, &this->ID);
     glBindTexture(GL_TEXTURE_2D, this->ID);
     glTexImage2D(GL_TEXTURE_2D, 0, this->INTERNAL_FORMAT, width, height, 0, this->IMAGE_FORMAT, GL_UNSIGNED_BYTE, data);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, this->WRAP_S);
@@ -74,4 +75,9 @@ Texture& Texture::operator=(Texture& tex)
 GLuint Texture::getTexture()
 {
     return (this->ID);
+}
+
+std::string Texture::getName()
+{
+    return name;
 }
