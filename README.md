@@ -1,7 +1,11 @@
-# Antix
-Game Engine built for educational purpose only. The engine is not complete yet.
-Any help and suggessions are much appreciated.
-To run this program
+
+Game Engine built for educational purpose only.  This is a simple game engine written in C++. You don't need to install any external dependencies.
+Requirements:-
+Linux (tested on Arch Linux)
+freeglut
+SOIL
+OpenGL
+
 go to src folder, then open terminal and type "make", this will compile all the source code 
 then run the program with ./main
 
